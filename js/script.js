@@ -19,14 +19,14 @@ async function getMotivationalQuote () {
     console.log(jsonData)
 
     // bring the information from API
-    const quoteText = jsonData[0].text
+    const quotePhrase = jsonData[0].phrase
     const quoteAuthor = jsonData[0].author
 
     // output
     // <b> format reference: 'https://www.w3schools.com/Jsref/jsref_bold.asp'
     document.getElementById('motivational-quote').innerHTML =
       '<b>Quote:</b> "' +
-      quoteText +
+      quotePhrase +
       '"<br />' +
       '<b>Author:</b> ' +
       quoteAuthor +
