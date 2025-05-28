@@ -10,7 +10,6 @@
  * The 'async' is there because it will take time for the internet to return the value
  */
 async function getMotivationalQuote () {
-  // the 'try' is here because the internet may not be working
   try {
     const resultJSON = await fetch(
       'https://gomezmig03.github.io/MotivationalAPI/en.json'
@@ -18,12 +17,12 @@ async function getMotivationalQuote () {
     const jsonData = await resultJSON.json()
     console.log(jsonData)
 
-    // bring the information from API
-    const quotePhrase = jsonData[0].phrase
-    const quoteAuthor = jsonData[0].author
+    // Get a random index based on the length of the array
+    const randomIndex = Math.floor(Math.random() * jsonData.length)
+    const quotePhrase = jsonData[randomIndex].phrase
+    const quoteAuthor = jsonData[randomIndex].author
 
-    // output
-    // <b> format reference: 'https://www.w3schools.com/Jsref/jsref_bold.asp'
+    // Output the quote and author
     document.getElementById('motivational-quote').innerHTML =
       '<b>Quote:</b> "' +
       quotePhrase +
@@ -35,3 +34,4 @@ async function getMotivationalQuote () {
     console.error(error)
   }
 }
+
